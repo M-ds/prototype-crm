@@ -20,15 +20,18 @@ public class KlantRelatiesUi {
     public void showKlantRelatieUi() {
         System.out.println("Je kan de volgende opties kiezen: [1] toon alle relaties, [2] ga terug naar applicatie.");
 
-        String userInput = scanner.next();
+        while (!scanner.hasNextInt()) {
+            System.out.println("input is not numeric, please choose a valid number");
+            scanner.next();
+        }
+
+        int userInput = scanner.nextInt();
 
         if (!isInputValid(userInput)) {
             showKlantRelatieUi();
         }
 
-        int choice = Integer.parseInt(userInput);
-
-        switch (choice) {
+        switch (userInput) {
             case 1:
                 System.out.println("Alle bekende klantgegevens:");
                 final var klantRelaties = klantRelatieService.getAllKlantRelaties();
@@ -38,13 +41,16 @@ public class KlantRelatiesUi {
                 }
                 break;
             case 2:
+                System.out.println("Toevoegen van een nieuwe klant");
+                break;
+            case 3:
                 System.out.println("Ga terug");
                 break;
         }
     }
 
     private String formatKlantRelatie(KlantRelatie klantRelatie) {
-        return "Bedrijf: %s\nContact persoon: %s\nAdres: %s %s\nEmail: %s\nTelefoonnummer: %s\nNotities: %s".formatted(
+        return "Bedrijf: %s%nContact persoon: %s%nAdres: %s %s%nEmail: %s%nTelefoonnummer: %s%nNotities: %s".formatted(
                 klantRelatie.getBedrijfsnaam(),
                 klantRelatie.getContactPersoon(),
                 klantRelatie.getAdres(),
@@ -56,12 +62,7 @@ public class KlantRelatiesUi {
     }
 
 
-    private boolean isInputValid(String input) {
-        if (!InputValidator.isNumeric(input)) {
-            System.out.println("input is not numeric, please choose a valid number");
-            return false;
-        }
-
+    private boolean isInputValid(int input) {
         if (InputValidator.inputIsSmallerThanSmallestValue(input, 1)) {
             System.out.println("Input is smaller than the lower possible value. Please check input");
             return false;

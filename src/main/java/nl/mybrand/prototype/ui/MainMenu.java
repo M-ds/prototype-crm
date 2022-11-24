@@ -18,14 +18,18 @@ public class MainMenu {
         boolean applicationLoop = true;
         System.out.println("Je kan de volgende opties kiezen: [1] Toon klantrelaties, [2] stop.");
 
-        String userInput = scanner.next();
+        while (!scanner.hasNextInt()) {
+            System.out.println("input is not numeric, please choose a valid number");
+            scanner.next();
+        }
+
+        int userInput = scanner.nextInt();
 
         if (!isInputValid(userInput)) {
             mainMenuChoices();
         }
 
-        int choice = Integer.parseInt(userInput);
-        switch (choice) {
+        switch (userInput) {
             case 1:
                 System.out.println("Toon alle klantenrelaties");
                 klantRelatiesUi.showKlantRelatieUi();
@@ -42,12 +46,7 @@ public class MainMenu {
         return applicationLoop;
     }
 
-    private boolean isInputValid(String input) {
-        if (!InputValidator.isNumeric(input)) {
-            System.out.println("input is not numeric, please choose a valid number");
-            return false;
-        }
-
+    private boolean isInputValid(int input) {
         if (InputValidator.inputIsSmallerThanSmallestValue(input, 1)) {
             System.out.println("Input is smaller than the lower possible value. Please check input");
             return false;
