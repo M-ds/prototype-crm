@@ -5,6 +5,7 @@ import nl.mybrand.prototype.service.KlantRelatieService;
 import nl.mybrand.prototype.service.KlantRelatieServiceImpl;
 import nl.mybrand.prototype.utils.InputValidator;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class KlantRelatiesUi {
@@ -14,11 +15,11 @@ public class KlantRelatiesUi {
 
     public KlantRelatiesUi(Scanner scanner) {
         this.scanner = scanner;
-        this.klantRelatieService = new KlantRelatieServiceImpl();
+        this.klantRelatieService = new KlantRelatieServiceImpl(scanner);
     }
 
     public void showKlantRelatieUi() {
-        System.out.println("Je kan de volgende opties kiezen: [1] toon alle relaties, [2] ga terug naar applicatie.");
+        System.out.println("Je kan de volgende opties kiezen: [1] toon alle relaties, [2] toevoegen van een nieuwe klant, [3] ga terug naar main menu");
 
         while (!scanner.hasNextInt()) {
             System.out.println("input is not numeric, please choose a valid number");
@@ -34,7 +35,7 @@ public class KlantRelatiesUi {
         switch (userInput) {
             case 1:
                 System.out.println("Alle bekende klantgegevens:");
-                final var klantRelaties = klantRelatieService.getAllKlantRelaties();
+                List<KlantRelatie> klantRelaties = klantRelatieService.getAllKlantRelaties();
                 for (KlantRelatie klantRelatie : klantRelaties) {
                     System.out.println(formatKlantRelatie(klantRelatie));
                     System.out.println();
@@ -42,9 +43,15 @@ public class KlantRelatiesUi {
                 break;
             case 2:
                 System.out.println("Toevoegen van een nieuwe klant");
+                boolean success = klantRelatieService.toevoegenVanKlantrelatie();
+                if (success) {
+                    System.out.println("Klantrelatie is toegevoegd");
+                } else {
+                    System.out.println("Klantrelatie is niet toegevoegd, bedrijfnaam moet ingevuld zijn.");
+                }
                 break;
             case 3:
-                System.out.println("Ga terug");
+                System.out.println("Ga terug naar main menu");
                 break;
         }
     }

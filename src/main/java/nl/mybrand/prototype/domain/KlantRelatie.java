@@ -1,6 +1,7 @@
 package nl.mybrand.prototype.domain;
 
 public class KlantRelatie {
+    private int id;
     private String bedrijfsnaam;
     private String contactPersoon;
     private String adres;
@@ -9,7 +10,8 @@ public class KlantRelatie {
     private String telefoonnummer;
     private String notities;
 
-    public KlantRelatie(String bedrijfsnaam, String contactPersoon, String adres, String postcode, String email, String telefoonnummer, String notities) {
+    public KlantRelatie(int id, String bedrijfsnaam, String contactPersoon, String adres, String postcode, String email, String telefoonnummer, String notities) {
+        this.id = id;
         this.bedrijfsnaam = bedrijfsnaam;
         this.contactPersoon = contactPersoon;
         this.adres = adres;
@@ -17,6 +19,17 @@ public class KlantRelatie {
         this.email = email;
         this.telefoonnummer = telefoonnummer;
         this.notities = notities;
+    }
+
+    public KlantRelatie() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBedrijfsnaam() {
