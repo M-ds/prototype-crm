@@ -19,7 +19,7 @@ public class MainMenu {
         System.out.println("Je kan de volgende opties kiezen: [1] Toon klantrelaties, [2] stop.");
 
         while (!scanner.hasNextInt()) {
-            System.out.println("input is not numeric, please choose a valid number");
+            System.out.println("Input is niet nummerriek, controleer je input.");
             scanner.next();
         }
 
@@ -47,12 +47,12 @@ public class MainMenu {
     }
 
     private boolean isInputValid(int input) {
-        if (InputValidator.inputIsSmallerThanSmallestValue(input, 1)) {
+        if (InputValidator.inputIsKleinerDanLaagsteWaarde(input, 1)) {
             System.out.println("Input is kleiner dan de laagst mogelijke input, controleer je input.");
             return false;
         }
 
-        if (InputValidator.inputIsGreaterThanHighestValue(input, 2)) {
+        if (InputValidator.inputIsGroterDanHoogsteWaarde(input, 2)) {
             System.out.println("Input is groter dan de hoogst mogelijke input, controleer je input.");
             return false;
         }

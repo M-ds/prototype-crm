@@ -13,7 +13,6 @@ public class ContactMomentServiceImpl implements ContactMomentService {
     private final List<ContactMoment> alleContactMomenten = new ArrayList<>();
 
     public ContactMomentServiceImpl() {
-        // Test data;
         alleContactMomenten.add(new ContactMoment(LocalDate.of(2021, Month.JULY, 2), LocalTime.of(10, 30, 0), "Raamsdonkveer 1000 AB", 1, "Dit zijn een paar notities die toegevoegd zijn"));
         alleContactMomenten.add(new ContactMoment(LocalDate.of(2021, Month.AUGUST, 5), LocalTime.of(16, 30, 0), "Oosterhout 1356 AB", 1, "Test"));
         alleContactMomenten.add(new ContactMoment(LocalDate.of(2022, Month.OCTOBER, 7), LocalTime.of(9, 30, 0), "Breda 1690 AB", 2, "random"));

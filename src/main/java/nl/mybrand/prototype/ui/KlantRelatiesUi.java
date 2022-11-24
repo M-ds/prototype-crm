@@ -100,12 +100,12 @@ public class KlantRelatiesUi {
 
 
     private boolean isInputValid(int input) {
-        if (InputValidator.inputIsSmallerThanSmallestValue(input, 1)) {
+        if (InputValidator.inputIsKleinerDanLaagsteWaarde(input, 1)) {
             System.out.println("Input is lager dan verwacht, controleer je input.");
             return false;
         }
 
-        if (InputValidator.inputIsGreaterThanHighestValue(input, 3)) {
+        if (InputValidator.inputIsGroterDanHoogsteWaarde(input, 3)) {
             System.out.println("Input is te groot, controleer je input.");
             return false;
         }

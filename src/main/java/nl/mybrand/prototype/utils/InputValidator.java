@@ -5,12 +5,12 @@ public final class InputValidator {
     private InputValidator() {
     }
 
-    public static boolean inputIsSmallerThanSmallestValue(int input, int smallestValue) {
-        return input < smallestValue;
+    public static boolean inputIsKleinerDanLaagsteWaarde(int input, int laagsteWaarde) {
+        return input < laagsteWaarde;
     }
 
-    public static boolean inputIsGreaterThanHighestValue(int input, int highestValue) {
-        return input > highestValue;
+    public static boolean inputIsGroterDanHoogsteWaarde(int input, int hoogsteWaarde) {
+        return input > hoogsteWaarde;
     }
 
 }
