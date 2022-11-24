@@ -10,12 +10,16 @@ public class KlantRelatieServiceImpl implements KlantRelatieService {
 
     private final List<KlantRelatie> klantRelaties = new ArrayList<>();
     private final Scanner scanner;
+    private final ContactMomentService contactMomentService;
 
-    public KlantRelatieServiceImpl(Scanner scanner) {
+    public KlantRelatieServiceImpl(Scanner scanner, ContactMomentService contactMomentService) {
         this.scanner = scanner;
         // Dit zorgt ervoor dat we spaties kunnen gebruiker voor een nieuwe relatie toe te voegen.
         this.scanner.useDelimiter("\n");
 
+        this.contactMomentService = contactMomentService;
+
+        // Test data
         klantRelaties.add(new KlantRelatie(1, "Mybrand", "Bob de Bouwer", "Vijverlaan 12", "1234 AB", "voorbeeld@mail.com", "06123456789", "Bla bla bla"));
         klantRelaties.add(new KlantRelatie(2, "Bouwbedrijf", "Bobien de bouwer", "Genstestraat 123", "1234 CB", "voorbeeld-2@mail.com", "123476959", "Bla bla bla bla bla bla"));
         klantRelaties.add(new KlantRelatie(3, "Bredrijg", "Contact Persoon", "Veerstraat 10", "9000 AB", "voorbeeld-3@mail.com", "12345677", "Notities en nog meer dingen"));
@@ -23,6 +27,9 @@ public class KlantRelatieServiceImpl implements KlantRelatieService {
 
     @Override
     public List<KlantRelatie> getAllKlantRelaties() {
+        for (KlantRelatie klantRelatie : klantRelaties) {
+            klantRelatie.setContactMomenten(contactMomentService.findContactMomentenVoorKlant(klantRelatie.getId()));
+        }
         return klantRelaties;
     }
 

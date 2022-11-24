@@ -48,12 +48,12 @@ public class MainMenu {
 
     private boolean isInputValid(int input) {
         if (InputValidator.inputIsSmallerThanSmallestValue(input, 1)) {
-            System.out.println("Input is smaller than the lower possible value. Please check input");
+            System.out.println("Input is kleiner dan de laagst mogelijke input, controleer je input.");
             return false;
         }
 
         if (InputValidator.inputIsGreaterThanHighestValue(input, 2)) {
-            System.out.println("Input is too big, please check your input.");
+            System.out.println("Input is groter dan de hoogst mogelijke input, controleer je input.");
             return false;
         }
         return true;

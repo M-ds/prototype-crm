@@ -20,10 +20,9 @@ public class Main {
         boolean applicationLoop;
 
         MainMenu mainMenu = new MainMenu(scanner);
-        System.out.println("Applicatie wordt opgestart..");
+        System.out.println("\nApplicatie wordt opgestart..");
         do {
             applicationLoop = mainMenu.mainMenuChoices();
-
         } while (applicationLoop);
     }
 

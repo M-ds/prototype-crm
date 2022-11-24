@@ -1,5 +1,7 @@
 package nl.mybrand.prototype.domain;
 
+import java.util.List;
+
 public class KlantRelatie {
     private int id;
     private String bedrijfsnaam;
@@ -9,6 +11,7 @@ public class KlantRelatie {
     private String email;
     private String telefoonnummer;
     private String notities;
+    private List<ContactMoment> contactMomenten;
 
     public KlantRelatie(int id, String bedrijfsnaam, String contactPersoon, String adres, String postcode, String email, String telefoonnummer, String notities) {
         this.id = id;
@@ -86,5 +89,13 @@ public class KlantRelatie {
 
     public void setNotities(String notities) {
         this.notities = notities;
+    }
+
+    public List<ContactMoment> getContactMomenten() {
+        return contactMomenten;
+    }
+
+    public void setContactMomenten(List<ContactMoment> contactMomenten) {
+        this.contactMomenten = contactMomenten;
     }
 }
